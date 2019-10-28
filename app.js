@@ -1,10 +1,10 @@
 const planets = require('./modules/planets')
+const spacex = require('./modules/spacex')
 const Discord = require('discord.js');
 const fetch = require("node-fetch");
 
 const client = new Discord.Client();
 const prefix = '.'
-const spacex_logo = 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/36/SpaceX-Logo-Xonly.svg/1280px-SpaceX-Logo-Xonly.svg.png'
 
 
 client.on('ready', () => {
@@ -45,48 +45,6 @@ client.on('message', msg => {
     planets.pluto(msg)
   }
 
-  if (msg.content === 'spacex latest') {
-    fetch('https://api.spacexdata.com/v3/launches/latest')
-    .then(response => response.json())
-    .then(json => {
-      const embed = new Discord.MessageEmbed()       
-      .setColor('#005288')
-      .addField('Mission Name', json.mission_name, true)
-      .addField('Rocket Name', json.rocket.rocket_name, true)
-      .addField('Mission Status', json.launch_success ? "The mission was successful" : "The mission was unsuccessful")
-      .addField('Launch Site', json.launch_site.site_name_long)
-      .addField('Mission Info', json.details)
-      .setThumbnail(json.links.mission_patch ? json.links.mission_patch : spacex_logo)
-      .setTimestamp(json.launch_date_utc)
-      .setFooter('Mission date', json.links.mission_patch ? json.links.mission_patch : spacex_logo)
-    
-      msg.channel.send(embed);
-    }
-
-    )
-  }
-
-  if (msg.content === 'spacex next') {
-    fetch('https://api.spacexdata.com/v3/launches/next')
-    .then(response => response.json())
-    .then(json => {
-      const embed = new Discord.MessageEmbed()       
-      .setColor('#005288')
-      .addField('Mission Name', json.mission_name, true)
-      .addField('Rocket Name', json.rocket.rocket_name, true)
-      .addField('Mission Status', 'Planned')
-      .addField('Launch Site', json.launch_site.site_name_long)
-      .addField('Mission Info', json.details ? json.details : 'No info yet.')
-      .setThumbnail(json.links.mission_patch ? json.links.mission_patch : spacex_logo)
-      .setTimestamp(json.launch_date_utc)
-      .setFooter('Mission date', json.links.mission_patch ? json.links.mission_patch : spacex_logo)
-
-      msg.channel.send(embed);
-    }
-
-    )
-  }
-
   if (msg.content === 'iss crew') {
     fetch('https://www.howmanypeopleareinspacerightnow.com/peopleinspace.json')
     .then(response => response.json())
@@ -120,30 +78,18 @@ client.on('message', msg => {
     )
   }
 
-  if (msg.content === 'spacex info') {
-    fetch('https://api.spacexdata.com/v3/info')
-    .then(response => response.json())
-    .then(json => {
-      const embed = new Discord.MessageEmbed()       
-      .setColor('#005288')
-      .addField('Founder', json.founder)
-      .addField('Chief Executive Officer', json.ceo, true)
-      .addField('Chief Technology Officer', json.cto, true)
-      .addField('Chief Operating Officer', json.coo, true)
-      .addField('Chief Propulsion Officer', json.cto_propulsion, true)
-      .addField('Headquarters', json.headquarters.address + ',\n ' +  json.headquarters.city + ', ' +  json.headquarters.state , true)
-      .addField('Employees', new Intl.NumberFormat('en-US').format(json.employees), true)
-      .addField('About', json.summary)
-      .addField('Valuation', new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(json.valuation))
-      .setThumbnail(spacex_logo)
-      .setFooter('spacex.com', spacex_logo)
-
-      msg.channel.send(embed);
-    }
-
-    )
+  if (msg.content === 'spacex next') {
+    spacex.next(msg)
   }
 
+  if (msg.content === 'spacex info') {
+    spacex.info(msg)
+  }
+
+  if (msg.content === 'spacex latest') {
+    spacex.latest(msg)
+  }
+  
   if (msg.content === 'mars rover') {
     fetch('https://api.maas2.apollorion.com/')
     .then(response => response.json())
