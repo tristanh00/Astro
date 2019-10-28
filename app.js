@@ -1,9 +1,11 @@
 const planets = require('./modules/planets')
 const spacex = require('./modules/spacex')
-const Discord = require('discord.js');
-const fetch = require("node-fetch");
+const iss = require('./modules/iss')
+const config = require('./config.json')
+const Discord = require('discord.js')
+const fetch = require("node-fetch")
 
-const client = new Discord.Client();
+const client = new Discord.Client()
 const prefix = '.'
 
 
@@ -87,4 +89,4 @@ client.on('message', msg => {
 
 });
 
-client.login('NjE4NTcyNDkzOTEzMDYzNDI1.XbBdhQ.KxYFn3rQN0KqrHYw5Cp8u4y_vJU');
+client.login(config.key);
