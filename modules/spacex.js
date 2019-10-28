@@ -1,4 +1,6 @@
-const Discord = require('discord.js');
+const Discord = require('discord.js')
+const fetch = require("node-fetch")
+
 const spacex_logo = 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/36/SpaceX-Logo-Xonly.svg/1280px-SpaceX-Logo-Xonly.svg.png'
 
 const latest = (msg) => {

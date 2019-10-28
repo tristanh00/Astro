@@ -1,4 +1,5 @@
 const Discord = require('discord.js');
+const fetch = require("node-fetch")
 
 
 
@@ -37,11 +38,12 @@ const info = (msg) => {
     const embed = new Discord.MessageEmbed()       
     .setColor('#005288')
     .setTitle('International Space Station')
-    .addField('Year Built', '1998', true)
-    .addField('Orbits around Earth', '16 times per day', true)
+    .addField('Year Built', '1998',)
+    .addField('Orbits around Earth', '16 times per day')
     .addField('Number of Spacewalks', '205 to date', true)
     .addField('Number of Visitors', '230 people have been aboard the ISS', true)
-    
+    .addField('Currently Over', 'CORDINATES')
+
     msg.channel.send(embed);
     
 }
