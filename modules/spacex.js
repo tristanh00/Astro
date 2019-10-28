@@ -58,9 +58,7 @@ const info = (msg) => {
       .setFooter('spacex.com', spacex_logo)
 
       msg.channel.send(embed);
-    }
-
-    )
+    })
 }
 
 

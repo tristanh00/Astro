@@ -46,37 +46,13 @@ client.on('message', msg => {
   }
 
   if (msg.content === 'iss crew') {
-    fetch('https://www.howmanypeopleareinspacerightnow.com/peopleinspace.json')
-    .then(response => response.json())
-    .then(json => {
-      const embed = new Discord.MessageEmbed()       
-      .setColor('#2a2a2a')
-      .setFooter(json.number + ' people are currently aboard the International Space Station') 
-      json.people.forEach((astronaut) => {
-        let flag = null
-        switch(astronaut.country) {
-          case 'usa':
-            flag = ':flag_us:'
-            break;
-          case 'russia':
-            flag = ':flag_ru:'
-            break;
-          case 'italy':
-            flag = ':flag_it:'
-            break;
-          case 'france':
-          flag = ':flag_fr:'
-            break;
-          default:
-            flag = ':earth_americas:'
-        } 
-        embed.addField(flag + ' ' + astronaut.name, astronaut.bio)
-      })
-      msg.channel.send(embed)
-    }
-
-    )
+    iss.crew(msg)
   }
+
+  if (msg.content === 'iss info') {
+    iss.info(msg)
+  }
+
 
   if (msg.content === 'spacex next') {
     spacex.next(msg)
@@ -89,7 +65,7 @@ client.on('message', msg => {
   if (msg.content === 'spacex latest') {
     spacex.latest(msg)
   }
-  
+
   if (msg.content === 'mars rover') {
     fetch('https://api.maas2.apollorion.com/')
     .then(response => response.json())
