@@ -1,0 +1,32 @@
+{
+  "name": "astro-bot",
+  "version": "1.0.1",
+  "description": "A space related Discord bot, get planets, spacex, iss data & more!",
+  "main": "app.js",
+  "dependencies": {
+    "discord.js": "^12.0.0-dev",
+    "node-opus": "^0.3.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tristanv1/Astro.git"
+  },
+  "keywords": [
+    "discord",
+    "bot",
+    "spacex",
+    "iss",
+    "planets",
+    "space-station",
+  ],
+  "author": "tristanv1",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tristanv1/Astro/issues"
+  },
+  "homepage": "https://github.com/tristanv1/Astro#readme"
+}
