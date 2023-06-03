@@ -1,6 +1,6 @@
 # Astro 🚀✨
 
-Discord Space Bot to get space related info such as planet information, ISS crew members, SpaceX launch data, Mars rover information and more!
+Discord Space Bot to get space facts and stats, such as, planet information, ISS crew members, SpaceX launch data, Mars rover information and more!
 
 ### Commands:
 - spacex latest
