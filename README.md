@@ -13,7 +13,5 @@ Returns a Embeded Message with next planned launch from SpaceX
 Get the latest information available from the Curiosity Rover on Mars, such as temperature and atmospheric visibility
   
 ### TODO
-Add config file.
-
-### Contact
-Discord: `tristan#9999`
+Add config files. 
+Document all commands.
